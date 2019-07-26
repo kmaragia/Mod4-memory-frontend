@@ -21,10 +21,14 @@ class CardsContainer extends React.Component{
     })
   }
 
+  flipCard = (kitty) => {
+    console.log(kitty)
+  }
+
   render(){
     return (
       <div>{this.state.allCards.map(card => {
-        return <Cards card={card}/>
+        return <Cards card={card} flipCard={this.flipCard}/>
       }
       )
       }

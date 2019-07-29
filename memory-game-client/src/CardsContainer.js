@@ -22,9 +22,9 @@ class CardsContainer extends React.Component{
     })
   }
 
-  flipCard = (kitty) => {
-    console.log(kitty)
-  }
+  // flipCard = (kitty) => {
+  //   console.log(kitty)
+  // }
 
   randomOrder = (allKittens) => {
     let kittensArray = allKittens

@@ -7,7 +7,8 @@ class CardsContainer extends React.Component{
   constructor(){
     super()
     this.state = {
-      allCards: []
+      allCards: [],
+      twoCards: [],
     }
   }
 
@@ -22,9 +23,28 @@ class CardsContainer extends React.Component{
     })
   }
 
-  // flipCard = (kitty) => {
-  //   console.log(kitty)
-  // }
+  compareCards = () => {
+    if (this.state.twoCards[0].id === this.state.twoCards[1].id ){
+      alert("one Point")
+    }
+  }
+
+  flipCard = (card) =>{
+
+      this.setState({
+        twoCards:[...this.state.twoCards,card]
+      }, () => {
+        console.log(this.state.twoCards.length)
+        console.log(this.state.twoCards[0])
+           if (this.state.twoCards.length === 2){
+                this.compareCards()
+        }
+      })
+
+//    if (this.state.twoCards.length === 2){
+//         this.compareCards()
+// }
+  }
 
   randomOrder = (allKittens) => {
     let kittensArray = allKittens
@@ -32,17 +52,17 @@ class CardsContainer extends React.Component{
 
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-  
+
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-  
+
       // And swap it with the current element.
       temporaryValue = kittensArray[currentIndex];
       kittensArray[currentIndex] = kittensArray[randomIndex];
       kittensArray[randomIndex] = temporaryValue;
     }
-  
+
     return kittensArray;
   }
 
@@ -53,9 +73,9 @@ class CardsContainer extends React.Component{
           <div className="row">
             {this.state.allCards.map(card => {
                 return (
-                <Cards 
-                key={card.id}
-                card={card} 
+                <Cards
+                key={card.index}
+                card={card}
                 flipCard={this.flipCard}
                 />
                 )

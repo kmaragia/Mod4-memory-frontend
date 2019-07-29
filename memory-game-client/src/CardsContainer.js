@@ -9,6 +9,7 @@ class CardsContainer extends React.Component{
     this.state = {
       allCards: [],
       twoCards: [],
+      match: null
     }
   }
 
@@ -16,35 +17,82 @@ class CardsContainer extends React.Component{
     fetch("http://localhost:3000/cards")
     .then(response => response.json())
     .then(allKittens => {
-      let randomKittenOrder = this.randomOrder([...allKittens, ...allKittens])
+        var kittens = allKittens.map(kitten => {
+        return {...kitten, show:false}
+      })
+      let kittensCopy = allKittens.map(kittenC => {
+        return {...kittenC, show: false, id: `copy-${kittenC.id}`}
+      })
+      let randomKittenOrder = this.randomOrder([...kittens, ...kittensCopy])
       this.setState({
         allCards: randomKittenOrder
       })
     })
   }
+  // resetCards = () => {
+  //   this.setState({
+  //     flipped:false
+  //   })
+  // }
+  // matchToNull = () => {
+  //   this.setState({
+  //     match:null
+  //   })
+  // }
 
   compareCards = () => {
-    if (this.state.twoCards[0].id === this.state.twoCards[1].id ){
-      alert("one Point")
+
+    if (this.state.twoCards[0].card_image === this.state.twoCards[1].card_image){
+      console.log('match')
     }
-  }
+
+      // this.setState({
+      //   match:true
+      // })
+      // console.log("is a match")
+      // this.setState({
+      //   match:true
+
+    //   console.log("not a match")
+    //   this.setState({
+    //     twoCards:[]
+    //   })
+    //   setTimeout(() => {
+    //     this.setState({
+    //       match:false
+    //     })
+    // },2000)
+
+}
 
   flipCard = (card) =>{
+    //find the card from state.allCards and change its show value to true
+    //update state for allCards for that card
+    let updateCards = this.state.allCards.map(oldCard =>{
+      if (oldCard.id === card.id){
+        return {...oldCard, show:true}
+      }else{
+        return oldCard
+      }
+    })
 
+      // console.log(card.show)
       this.setState({
-        twoCards:[...this.state.twoCards,card]
+        twoCards:[...this.state.twoCards,card],
+        allCards: updateCards
       }, () => {
-        console.log(this.state.twoCards.length)
-        console.log(this.state.twoCards[0])
-           if (this.state.twoCards.length === 2){
+
+          if (this.state.twoCards.length === 2){
                 this.compareCards()
         }
       })
+      }
 
+//
 //    if (this.state.twoCards.length === 2){
 //         this.compareCards()
 // }
-  }
+
 
   randomOrder = (allKittens) => {
     let kittensArray = allKittens
@@ -77,6 +125,8 @@ class CardsContainer extends React.Component{
                 key={card.index}
                 card={card}
                 flipCard={this.flipCard}
+                match={this.state.match}
+                matchToNull={this.matchToNull}
                 />
                 )
           })

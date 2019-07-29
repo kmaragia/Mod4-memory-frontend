@@ -29,9 +29,7 @@ class CardsContainer extends React.Component{
     return (
       <div>{this.state.allCards.map(card => {
         return <Cards card={card} flipCard={this.flipCard}/>
-      }
-      )
-      }
+      })}
        </div>
     )
   }

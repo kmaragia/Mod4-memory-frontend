@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Redirect } from 'react-router'
 // import Profile from './Profile'
 // import HomePage from './HomePage'
 let toHome;
@@ -30,6 +31,7 @@ class Login extends React.Component {
   render() {
     return (
     <div>
+      {this.state.redirect? <Redirect to="/homepage"/>:(
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -45,6 +47,7 @@ class Login extends React.Component {
           <input type="submit" value="Login" />
         </form>
     </div>
+  )}
   </div>
     );
   }

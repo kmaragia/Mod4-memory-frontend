@@ -125,6 +125,7 @@ class CardsContainer extends React.Component{
   render(){
     return (
       <div>
+      
         <div className="ui four column grid">
           <div className="row">
             {this.state.allCards.map(card => {

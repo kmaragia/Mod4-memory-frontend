@@ -1,6 +1,8 @@
 import React from 'react';
 // import Profile from './Profile'
 // import HomePage from './HomePage'
+let toHome;
+
 class Login extends React.Component {
   constructor() {
     super()
@@ -19,9 +21,11 @@ class Login extends React.Component {
       passwordValue: event.target.value
     });
   }
+
   handleSubmit = (event) => {
-    alert( "pressed");
     event.preventDefault();
+
+
   }
   render() {
     return (
@@ -38,7 +42,7 @@ class Login extends React.Component {
             <input type="text" value={this.state.passwordValue} onChange={this.handleChangePassword} />
           </label>
           <br/>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Login" />
         </form>
     </div>
   </div>

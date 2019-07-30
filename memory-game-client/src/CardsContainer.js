@@ -1,5 +1,6 @@
 import React from 'react';
 import Cards from "./Cards"
+import debounce from 'lodash/debounce'
 
 
 class CardsContainer extends React.Component{
@@ -134,6 +135,7 @@ class CardsContainer extends React.Component{
                 flipCard={this.flipCard}
                 match={this.state.match}
                 matchToNull={this.matchToNull}
+                twoCards={this.twoCards}
                 />
                 )
           })

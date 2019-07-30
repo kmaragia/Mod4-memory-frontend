@@ -8,8 +8,7 @@ class CardsContainer extends React.Component{
     super()
     this.state = {
       allCards: [],
-      twoCards: [],
-      match: null
+      twoCards: []
     }
   }
 
@@ -29,69 +28,77 @@ class CardsContainer extends React.Component{
       })
     })
   }
-  // resetCards = () => {
-  //   this.setState({
-  //     flipped:false
-  //   })
-  // }
-  // matchToNull = () => {
-  //   this.setState({
-  //     match:null
-  //   })
-  // }
 
   compareCards = () => {
-
-    if (this.state.twoCards[0].card_image === this.state.twoCards[1].card_image){
-      console.log('match')
-    }
-
-      // this.setState({
-      //   match:true
-      // })
-      // console.log("is a match")
-      // this.setState({
-      //   match:true
-
-    //   console.log("not a match")
-    //   this.setState({
-    //     twoCards:[]
-    //   })
-    //   setTimeout(() => {
-    //     this.setState({
-    //       match:false
-    //     })
-    // },2000)
-
-}
-
-  flipCard = (card) =>{
-    //find the card from state.allCards and change its show value to true
-    //update state for allCards for that card
     let updateCards = this.state.allCards.map(oldCard =>{
-      if (oldCard.id === card.id){
-        return {...oldCard, show:true}
-      }else{
+      if (oldCard.card_image === this.state.twoCards[0].card_image){
+        return {...oldCard, show:false}
+      }
+      if (oldCard.card_image === this.state.twoCards[1].card_image){
+        return {...oldCard, show:false}
+      }
+      else {
         return oldCard
       }
     })
 
-      // console.log(card.show)
+    let trueCards = this.state.allCards.map(oldCard =>{
+      if (oldCard.card_image === this.state.twoCards[0].card_image){
+        return {...oldCard, show:true}
+      }
+      if (oldCard.card_image === this.state.twoCards[1].card_image){
+        return {...oldCard, show:true}
+      }
+      else {
+        return oldCard
+      }
+    })
+
+    if (this.state.twoCards[0].card_image === this.state.twoCards[1].card_image){
+
+      this.setState({
+        twoCards:[],
+        allCards:trueCards
+      })
+    }
+    else{
+      setTimeout(() => {
+      this.setState({
+        allCards: updateCards,
+        twoCards:[]
+      })
+    },2000)
+    }
+  }
+
+  flipCard = (card) => {
+    let updateCards;
+    if (this.state.twoCards.length < 2) {
+    updateCards = this.state.allCards.map(oldCard =>{
+      if (oldCard.id === card.id){
+        return {...oldCard, show:true}
+      }
+      else {
+        return oldCard
+      }
+    })}
+    else{
+      return card
+    }
+    if (card.show === true){
+      return null
+    }
+    else{
       this.setState({
         twoCards:[...this.state.twoCards,card],
         allCards: updateCards
       }, () => {
-
           if (this.state.twoCards.length === 2){
                 this.compareCards()
         }
-      })
-      }
+      })}
 
-//
-//    if (this.state.twoCards.length === 2){
-//         this.compareCards()
-// }
+      }
 
 
   randomOrder = (allKittens) => {

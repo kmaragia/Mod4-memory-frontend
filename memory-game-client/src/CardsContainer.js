@@ -1,5 +1,6 @@
 import React from 'react';
 import Cards from "./Cards"
+import debounce from 'lodash/debounce'
 
 
 class CardsContainer extends React.Component{
@@ -9,7 +10,7 @@ class CardsContainer extends React.Component{
     this.state = {
       allCards: [],
       twoCards: [],
-      match: null
+      match: null,
     }
   }
 
@@ -29,6 +30,8 @@ class CardsContainer extends React.Component{
       })
     })
   }
+
+
   // resetCards = () => {
   //   this.setState({
   //     flipped:false
@@ -66,15 +69,21 @@ class CardsContainer extends React.Component{
 }
 
   flipCard = (card) =>{
+    if (this.state.twoCards.length < 2) {
+      var updateCards = this.state.allCards.map(oldCard =>{
+        if (oldCard.id === card.id){
+          return {...oldCard, show:true}
+        }else{
+          return oldCard
+        }
+      })
+    }else {
+      return card
+    }
+
     //find the card from state.allCards and change its show value to true
     //update state for allCards for that card
-    let updateCards = this.state.allCards.map(oldCard =>{
-      if (oldCard.id === card.id){
-        return {...oldCard, show:true}
-      }else{
-        return oldCard
-      }
-    })
+
 
       // console.log(card.show)
       this.setState({
@@ -127,6 +136,7 @@ class CardsContainer extends React.Component{
                 flipCard={this.flipCard}
                 match={this.state.match}
                 matchToNull={this.matchToNull}
+                twoCards={this.twoCards}
                 />
                 )
           })

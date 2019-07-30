@@ -32,7 +32,7 @@ class Cards extends React.PureComponent{
 
           this.props.flipCard(this.props.card)}}>
 
-          {this.props.card.show ? <img src ={this.props.card.card_image} /> : <img src = "https://i.imgur.com/AxLzeTc.png" />}
+          {this.props.card.show ? <img src ={this.props.card.card_image} /> : <img src = "https://i.imgur.com/E8LQ5A7.png" />}
        </div>
     )
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router'
+import './App.css';
 // import Profile from './Profile'
 // import HomePage from './HomePage'
 let toHome;
@@ -31,7 +32,7 @@ class Login extends React.Component {
       redirect: true
     })}
     else{
-      alert("Wrong Username or Password")
+      alert("Wrong Username or Password!")
     }
 
 
@@ -41,13 +42,13 @@ class Login extends React.Component {
     <div>
       {this.state.redirect? <Redirect to="/homepage"/>:(
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
+        <form onSubmit={this.handleSubmit} className="form-box">
+          <label className="user">
             Enter User Name:
             <input type="text" value={this.state.nameValue} onChange={this.handleChangeName} />
           </label>
           <br/>
-          <label>
+          <label className="user">
             Enter Password:
             <input type="password" value={this.state.passwordValue} onChange={this.handleChangePassword} />
           </label>

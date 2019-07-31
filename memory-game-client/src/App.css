@@ -1,7 +1,15 @@
+
+body {
+  background-image: url("https://cdn.spacetelescope.org/archives/images/wallpaper4/heic0611b.jpg");
+  background-color: #cccccc;
+ }
+
 .App {
   text-align: center;
 }
-
+h1{
+  background-color: white;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -43,4 +51,17 @@ img {
   font-size: 16px;
   cursor: pointer;
   text-align: center;
+}
+
+.form-box {
+  border: white solid 30px !important;
+  width: 60%;
+  margin: 0px auto;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.user{
+  margin-top: 15px !important;
+  color: white;
 }

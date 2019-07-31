@@ -73,6 +73,12 @@ class CardsContainer extends React.Component{
   }
 
   flipCard = (card) => {
+    if (this.state.allCards.filter(card => card.show === true).length ===15){
+      setTimeout(() => {
+      alert("You Win!")
+    },1000)
+    }
+
     let updateCards;
     if (this.state.twoCards.length < 2) {
     updateCards = this.state.allCards.map(oldCard =>{
@@ -99,7 +105,7 @@ class CardsContainer extends React.Component{
         }
       })}
 
-      }
+  }
 
 
   randomOrder = (allKittens) => {
@@ -125,7 +131,7 @@ class CardsContainer extends React.Component{
   render(){
     return (
       <div>
-      
+
         <div className="ui four column grid">
           <div className="row">
             {this.state.allCards.map(card => {

@@ -20,7 +20,7 @@ class App extends React.Component {
               <Router>
                   <React.Fragment>
                     <Route exact path="/login" component={Login}/>
-                    <Route path="/" component={HomePage}/>
+                    <Route path="/homepage" component={HomePage}/>
                     <Route exact path="/game" component={CardsContainer}/>
                   </React.Fragment>
               </Router>

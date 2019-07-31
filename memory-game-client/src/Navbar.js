@@ -1,12 +1,12 @@
 import React from 'react';
-// import { Menu } from 'semantic-ui-react' /* FROM SEMANTIC REACT*/ 
+// import { Menu } from 'semantic-ui-react' /* FROM SEMANTIC REACT*/
 
 class Navbar extends React.Component{
     render(){
         return(
             <div>
                 <div>
-                    Game app
+                    <h1>Passatempo</h1>
                 </div>
             </div>
         )

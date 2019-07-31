@@ -9,7 +9,8 @@ class Login extends React.Component {
     super()
     this.state = {
       nameValue: '',
-      passwordValue:''
+      passwordValue:'',
+      redirect: false
     };
   }
   handleChangeName = (event) => {
@@ -25,6 +26,13 @@ class Login extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    if (this.state.nameValue === 'User1'&& this.state.passwordValue === 'Password'){
+    this.setState({
+      redirect: true
+    })}
+    else{
+      alert("Wrong Username or Password")
+    }
 
 
   }
@@ -41,7 +49,7 @@ class Login extends React.Component {
           <br/>
           <label>
             Enter Password:
-            <input type="text" value={this.state.passwordValue} onChange={this.handleChangePassword} />
+            <input type="password" value={this.state.passwordValue} onChange={this.handleChangePassword} />
           </label>
           <br/>
           <input type="submit" value="Login" />

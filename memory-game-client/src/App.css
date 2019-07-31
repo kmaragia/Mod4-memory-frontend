@@ -16,6 +16,8 @@ h1{
   pointer-events: none;
 }
 
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -53,6 +55,10 @@ img {
   text-align: center;
 }
 
+.column:hover{
+  cursor: pointer
+}
+
 .form-box {
   border: white solid 30px !important;
   width: 60%;
@@ -60,6 +66,7 @@ img {
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: white;
 }
 .user{
   margin-top: 15px !important;

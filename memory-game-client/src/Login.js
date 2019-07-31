@@ -41,19 +41,23 @@ class Login extends React.Component {
     return (
     <div>
       {this.state.redirect? <Redirect to="/homepage"/>:(
-      <div>
+      <div className="ui form">
         <form onSubmit={this.handleSubmit} className="form-box">
-          <label className="user">
-            Enter User Name:
+          <div className="field" >
+          <label className="user">Enter User Name:</label>
+
             <input type="text" value={this.state.nameValue} onChange={this.handleChangeName} />
-          </label>
-          <br/>
-          <label className="user">
-            Enter Password:
+
+          </div>
+
+          <div className="field" >
+          <label className="user">Enter Password:</label>
+
             <input type="password" value={this.state.passwordValue} onChange={this.handleChangePassword} />
-          </label>
-          <br/>
-          <input type="submit" value="Login" />
+
+          </div>
+          
+          <input className="ui submit button" type="submit" value="Login" />
         </form>
     </div>
   )}
